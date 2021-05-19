@@ -9,16 +9,17 @@ func f(x float64) float64 {
 	return math.Sin(x)
 }
 
-//Метод секущей
+//Метод секущих
 func sek() {
 	var a, b, eps float64
-	fmt.Println("Введите границы отрезка:")
-	fmt.Scan(&a, &b)
+	a, b, eps = 2, 4, 0.0001
+	//fmt.Println("Введите границы отрезка:")
+	//fmt.Scan(&a, &b)
 	a, b = math.Min(a, b), math.Max(a, b)
 
-	fmt.Println("Введите погрешность:")
-	fmt.Scan(&eps)
-
+	//fmt.Println("Введите погрешность:")
+	//fmt.Scan(&eps)
+	fmt.Printf("Границы отрезка: %.4f и %.4f \nПогрешность: %.4f \n", a, b, eps)
 	c1 := (a*f(b) - b*f(a)) / (f(b) - f(a))
 	c2 := c1 * 2
 	if f(a)*f(b) > 0 {
@@ -38,19 +39,22 @@ func sek() {
 
 		fmt.Printf("Результат: %f \n", c1)
 		fmt.Printf("Отклонение: %f \n", math.Abs(math.Pi-c1))
-		fmt.Printf("Количество итераций: %d \n", count)
+		fmt.Printf("Количество итераций: %d \n\n\n", count)
 	}
 }
 
-//Дихотомия
+//Метод дихотомии
 func dikhotomiya() {
 	var a, b, eps float64
-	fmt.Println("Введите границы отрезка:")
-	fmt.Scan(&a, &b)
+	a, b, eps = 2, 4, 0.0001
+	//fmt.Println("Введите границы отрезка:")
+	//fmt.Scan(&a, &b)
 	a, b = math.Min(a, b), math.Max(a, b)
 
-	fmt.Println("Введите погрешность:")
-	fmt.Scan(&eps)
+	//fmt.Println("Введите погрешность:")
+	//fmt.Scan(&eps)
+
+	fmt.Printf("Границы отрезка: %.4f и %.4f \nПогрешность: %.4f \n", a, b, eps)
 
 	c := (a + b) / 2
 	if f(a)*f(b) > 0 {
@@ -74,8 +78,8 @@ func dikhotomiya() {
 }
 
 func main() {
-	fmt.Println("Метод секущей:")
+	fmt.Println("Метод секущих:")
 	sek()
-	fmt.Println("Дихотомия:")
+	fmt.Println("Метод дихотомии:")
 	dikhotomiya()
 }
